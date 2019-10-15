@@ -1,0 +1,9 @@
+{
+    "python.pythonPath": "/anaconda3/envs/udacity/bin/python",
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": true,
+    "cornflakes.linter.executablePath": "/anaconda2/envs/udacity/bin/flake8",
+    "editor.wordWrapColumn": 100,
+    "editor.tabSize": 4
+}
