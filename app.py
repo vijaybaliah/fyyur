@@ -175,16 +175,21 @@ def search_venues():
     # seach for Hop should return "The Musical Hop".
     # search for "Music" should return "The Musical Hop"
     # and "Park Square Live Music & Coffee"
-    response = {
-            "count": 1,
-            "data": [{
-                "id": 2,
-                "name": "The Dueling Pianos Bar",
-                "num_upcoming_shows": 0,
-            }]
-    }
-    return render_template('pages/search_venues.html', results=response,
-                           search_term=request.form.get('search_term', ''))
+    response = {}
+    try:
+        venue_list = Venue.query.with_entities(Venue.id, Venue.name).\
+            filter(Venue.name.ilike('%' + request.form.get('search_term', '') +
+                                    '%')).all()
+
+        response['data'] = venue_list
+        response['count'] = len(venue_list)
+    except Exception as e:
+        print(e)
+        flash('An error occurred for the search term' +
+              request.form.get('search_term', ''))
+    finally:
+        return render_template('pages/search_venues.html', results=response,
+                               search_term=request.form.get('search_term', ''))
 
 
 @app.route('/venues/<int:venue_id>')
