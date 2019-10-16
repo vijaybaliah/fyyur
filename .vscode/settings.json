@@ -4,6 +4,6 @@
     "python.linting.flake8Enabled": true,
     "python.linting.enabled": true,
     "cornflakes.linter.executablePath": "/anaconda2/envs/udacity/bin/flake8",
-    "editor.wordWrapColumn": 100,
+    "editor.wordWrapColumn": 120,
     "editor.tabSize": 4
 }
