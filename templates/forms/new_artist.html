@@ -40,10 +40,23 @@
         <div class="form-group">
             <label for="image_link">Image Link</label>
             {{ form.image_link(class_ = 'form-control', placeholder='http://', autofocus = true) }}
+            {% for message in form.image_link.errors %}
+                <span class="error">{{ message }}</span>
+            {% endfor %}
         </div>
         <div class="form-group">
-            <label for="genres">Facebook Link</label>
-            {{ form.facebook_link(class_ = 'form-control', placeholder='http://', id=form.state, autofocus = true) }}
+            <label for="facebook_link">Facebook Link</label>
+            {{ form.facebook_link(class_ = 'form-control', placeholder='http://', autofocus = true ) }}
+            {% for message in form.facebook_link.errors %}
+                <span class="error">{{ message }}</span>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+            <label for="website">Website</label>
+            {{ form.website(class_ = 'form-control', placeholder='http://', autofocus = true ) }}
+            {% for message in form.website.errors %}
+                <span class="error">{{ message }}</span>
+            {% endfor %}
         </div>
         <input type="submit" value="Add Artist" class="btn btn-primary btn-lg btn-block">
     </form>
