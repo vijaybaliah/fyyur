@@ -32,6 +32,9 @@
             <label for="genres">Genres</label>
             <small>Ctrl+Click to select multiple</small>
             {{ form.genres(class_ = 'form-control', placeholder='Genres, separated by commas', id=form.state, autofocus = true) }}
+            {% for message in form.genres.errors %}
+                <span class="error">{{ message }}</span>
+            {% endfor %}
         </div>
         <div class="form-check">
             {{ form.seeking_talent(class_ = 'form-check-input', id=form.state, autofocus = true) }}
