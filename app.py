@@ -151,11 +151,13 @@ def venues():
     data = []
     city_state = ''
     for venue in venues_list:
+        num_upcoming_shows = db.session.query(Venue).join(Show).\
+            filter(Venue.id == venue.id, Show.start_time > datetime.now()).count()
         if city_state == venue.city + venue.state:
             data[len(data) - 1]['venues'].append({
                 'id': venue.id,
                 'name': venue.name,
-                'num_upcoming_shows': 0
+                'num_upcoming_shows': num_upcoming_shows
             })
         else:
             data.append({
@@ -164,7 +166,7 @@ def venues():
                 'venues': [{
                     'id': venue.id,
                     'name': venue.name,
-                    'num_upcoming_shows': 0
+                    'num_upcoming_shows': num_upcoming_shows
                 }]
             })
             city_state = venue.city + venue.state
