@@ -18,7 +18,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import Form
 from sqlalchemy import MetaData
 
-from forms import *
+from forms import VenueForm, ArtistForm, ShowForm
 
 # ----------------------------------------------------------------------------#
 # App Config.
@@ -144,7 +144,8 @@ def venues():
     # shows per venue.
     # state_city_query = db.session.query(Venue.state, Venue.city).group_by(Venue.state, Venue.city).subquery()
 
-    # venues_list = Venue.query.join(state_city_query, Venue.city == state_city_query.c.city).order_by(Venue.city, Venue.state).all()
+    # venues_list = Venue.query.join(state_city_query, Venue.city == state_city_query.c.city)\
+    # .order_by(Venue.city, Venue.state).all()
 
     venues_list = Venue.query.order_by(Venue.city, Venue.state).all()
     data = []
@@ -616,9 +617,9 @@ if not app.debug:
     app.logger.addHandler(file_handler)
     app.logger.info('errors')
 
-#----------------------------------------------------------------------------#
+# ----------------------------------------------------------------------------#
 # Launch.
-#----------------------------------------------------------------------------#
+# ----------------------------------------------------------------------------#
 
 # Default port:
 if __name__ == '__main__':
