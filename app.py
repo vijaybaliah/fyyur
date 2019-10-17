@@ -142,10 +142,6 @@ def venues():
     # TODO: replace with real venues data.
     # num_shows should be aggregated based on number of upcoming
     # shows per venue.
-    # state_city_query = db.session.query(Venue.state, Venue.city).group_by(Venue.state, Venue.city).subquery()
-
-    # venues_list = Venue.query.join(state_city_query, Venue.city == state_city_query.c.city)\
-    # .order_by(Venue.city, Venue.state).all()
 
     venues_list = Venue.query.order_by(Venue.city, Venue.state).all()
     data = []
